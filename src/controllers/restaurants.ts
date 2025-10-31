@@ -4,12 +4,7 @@ import { Request, Response } from "express";
 
 export const getAllRestaurants = (req: Request, res: Response) => {
   try {
-    const restaurantList = { Restaurants: [] as Restaurant[] };
-
-    for (const res of Restaurants) {
-      restaurantList.Restaurants.push(res);
-    }
-    res.json(restaurantList);
+    res.json({ Restaurants: Restaurants });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error reading file");
