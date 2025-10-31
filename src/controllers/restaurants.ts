@@ -2,7 +2,7 @@ import { Restaurant } from "../dto/restaurants.types.js";
 import { Restaurants } from "../dto/restaurants.js";
 import { Request, Response } from "express";
 
-export const getAllRestaurants = async (req: Request, res: Response) => {
+export const getAllRestaurants = (req: Request, res: Response) => {
   try {
     const restaurantList = { Restaurants: [] as Restaurant[] };
 
@@ -16,7 +16,7 @@ export const getAllRestaurants = async (req: Request, res: Response) => {
   }
 };
 
-export const getRestaurantByQuery = async (req: Request, res: Response) => {
+export const getRestaurantByQuery = (req: Request, res: Response) => {
   const { name, address, phone } = req.query;
 
   const filteredRestaurants = Restaurants.filter((restaurant) => {
@@ -36,7 +36,7 @@ export const getRestaurantByQuery = async (req: Request, res: Response) => {
   res.json(result);
 };
 
-export const createRestaurant = async (req: Request, res: Response) => {
+export const createRestaurant = (req: Request, res: Response) => {
   const { name, address, phone } = req.body as Restaurant;
 
   try {
@@ -65,7 +65,7 @@ export const createRestaurant = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteRestaurant = async (req: Request, res: Response) => {
+export const deleteRestaurant = (req: Request, res: Response) => {
   const { name, address, phone } = req.query;
 
   try {
@@ -92,7 +92,7 @@ export const deleteRestaurant = async (req: Request, res: Response) => {
   }
 };
 
-export const updateRestaurant = async (req: Request, res: Response) => {
+export const updateRestaurant = (req: Request, res: Response) => {
   const { name, address, phone } = req.query;
   const { newName, newAddress, newPhone } = req.body;
 
