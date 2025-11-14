@@ -18,6 +18,7 @@ export class RestaurantsController {
 
   @Post()
   create(@Body() createRestaurantDto: CreateRestaurantDto) {
+    console.log('Come!');
     return this.restaurantsService.create(createRestaurantDto);
   }
 
