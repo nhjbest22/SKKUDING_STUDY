@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { NotFoundError } from 'rxjs';
+import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class RestaurantsService {
@@ -29,7 +29,7 @@ export class RestaurantsService {
     });
 
     if (!restaurant)
-      throw new NotFoundError(`Restaurant with id ${id} not Found!`);
+      throw new NotFoundException(`Restaurant with id ${id} not Found!`);
 
     return restaurant;
   }
