@@ -1,9 +1,0 @@
-import { Restaurant } from "./restaurants.types.js";
-
-export const Restaurants: Restaurant[] = [
-  {
-    name: "봉수육",
-    address: "경기 수원시 장안구 율전로108번길 11 1층",
-    phone: "0507-1460-0903",
-  },
-];
