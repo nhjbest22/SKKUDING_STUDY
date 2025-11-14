@@ -6,13 +6,10 @@ import {
   Patch,
   Param,
   Delete,
-  UseFilters,
 } from '@nestjs/common';
 import { RestaurantsService } from './restaurants.service';
-import { HttpExceptionFilter } from 'src/common/filters/http-exception.filter';
-
+import { ParseIntPipe } from '@nestjs/common';
 @Controller('restaurants')
-@UseFilters(HttpExceptionFilter)
 export class RestaurantsController {
   constructor(private readonly restaurantsService: RestaurantsService) {}
 
@@ -27,17 +24,17 @@ export class RestaurantsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.restaurantsService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.restaurantsService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string) {
-    return this.restaurantsService.update(+id);
+  update(@Param('id', ParseIntPipe) id: number) {
+    return this.restaurantsService.update(id);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.restaurantsService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.restaurantsService.remove(id);
   }
 }
