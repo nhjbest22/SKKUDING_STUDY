@@ -1,8 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { CreateRestaurantDto } from './dto/create-restaurant.dto';
+import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 
 @Injectable()
 export class RestaurantsService {
-  create() {}
+  create(id: number, createRestaurantDto: CreateRestaurantDto) {}
 
   findAll() {
     throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
@@ -12,7 +14,7 @@ export class RestaurantsService {
     return `This action returns a #${id} restaurant`;
   }
 
-  update(id: number) {
+  update(id: number, updateRestaurantDto: UpdateRestaurantDto) {
     return `This action updates a #${id} restaurant`;
   }
 

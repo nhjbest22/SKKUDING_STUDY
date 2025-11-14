@@ -9,13 +9,16 @@ import {
 } from '@nestjs/common';
 import { RestaurantsService } from './restaurants.service';
 import { ParseIntPipe } from '@nestjs/common';
+import { CreateRestaurantDto } from './dto/create-restaurant.dto';
+import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
+import { Restaurant } from './entities/restaurant.entity';
 @Controller('restaurants')
 export class RestaurantsController {
   constructor(private readonly restaurantsService: RestaurantsService) {}
 
   @Post()
-  create() {
-    return this.restaurantsService.create();
+  create(@Body() createRestaurantDto: CreateRestaurantDto) {
+    return this.restaurantsService.create(createRestaurantDto);
   }
 
   @Get()
@@ -29,8 +32,11 @@ export class RestaurantsController {
   }
 
   @Patch(':id')
-  update(@Param('id', ParseIntPipe) id: number) {
-    return this.restaurantsService.update(id);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateRestaurantDto: UpdateRestaurantDto,
+  ) {
+    return this.restaurantsService.update(id, updateRestaurantDto);
   }
 
   @Delete(':id')
