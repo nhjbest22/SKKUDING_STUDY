@@ -4,7 +4,7 @@ import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 
 @Injectable()
 export class RestaurantsService {
-  create(id: number, createRestaurantDto: CreateRestaurantDto) {}
+  create(createRestaurantDto: CreateRestaurantDto) {}
 
   findAll() {
     throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
